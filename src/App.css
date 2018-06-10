@@ -1,0 +1,32 @@
+html {
+  width: 100%;
+}
+
+body {
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+ 
+}
+
+.call-slogan {
+  color: red;
+}
+
+@media all and (max-width: 1024px) {
+
+
+} 
+
+
+
+@media all and (max-width: 839px) {
+  
+} 
+/*
+@media all and (max-width: 480px) { ... }
+*/
