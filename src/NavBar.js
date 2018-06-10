@@ -1,6 +1,47 @@
 import React from 'react';
 import {Menu, Button, Icon} from 'semantic-ui-react';
 
+const OrderOnline = ({width}) => {
+    return (
+    <Menu.Item>
+        <Icon size='large' name='food' color='green'></Icon>
+        {width > 839 ? <span>Order Online</span> : ''}
+    </Menu.Item>
+    )
+} 
+
+const CallNow = ({width}) => {
+    return (
+        <Menu.Item>
+            <a href='tel:555-555-5555'>
+                <Icon size='large' name='call square'/>
+                {width > 839 ? <span className='call-slogan'>(555) 555-5555</span> : ''}
+            </a>
+        </Menu.Item>
+    )
+}
+
+const Location = ({width}) => {
+    return (
+        <Menu.Item>
+            <Icon size='large' name='location arrow' color='blue'></Icon>
+            {width > 839 ? <span>Location</span> : ''}
+        </Menu.Item>
+    )
+}
+
+const SignIn = ({width}) => {
+    return (
+        <Menu.Item>
+            {width > 600 ? 
+                <Button primary size='mini'>Sign in to Order</Button> :
+                <Icon size='large' name='user'/>
+            }
+        </Menu.Item>
+    )
+}
+
+
 class NavBar extends React.Component {
 
     constructor(props) {
@@ -23,24 +64,18 @@ class NavBar extends React.Component {
         window.removeEventListener("resize", this.updateWidth);
     }
 
+
+
     render() {
         const {width} = this.state;
-        const location = (
-            <Menu.Item>
-                <Icon size='large' name='location arrow' color='blue'></Icon>
-                <span>Location</span>
-            </Menu.Item>
-        );
 
         const desktopRight = (
-            <Menu.Menu position='right'>
-                <Menu.Item>
-                    <Icon size='large' name='call square'/>
-                    <span className='call-slogan'>(555) 555-5555</span>
-                </Menu.Item>
-                <Menu.Item>
-                    <Button primary size='mini'>Sign in to Order</Button>
-                </Menu.Item>
+            <Menu.Menu>
+                <OrderOnline width={width}/>
+                <Location width={width}/>
+                <CallNow width={width}/>
+                <SignIn width={width}/>
+
                 <Menu.Item>
                     <Icon size='large' name='shopping cart' color='grey'></Icon>
                 </Menu.Item>
@@ -48,12 +83,8 @@ class NavBar extends React.Component {
         );
 
         const mobileRight = (
-                <Menu.Menu position='right'>
-                <Menu.Item>
-                    <a href='tel:555-555-5555'>
-                        <Icon size='large' name='call square'/>
-                    </a>
-                </Menu.Item>
+            <Menu.Menu>
+
                 <Menu.Item>
                     <Button primary size='mini'>Sign in to Order</Button>
                 </Menu.Item>
@@ -71,12 +102,7 @@ class NavBar extends React.Component {
                     <Icon size='large' name='chess queen' color='yellow'></Icon>
                     <span>Golden Crown</span>
                 </Menu.Item>
-                <Menu.Item>
-                    <Icon size='large' name='food' color='green'></Icon>
-                    <span>Order Online</span>
-                </Menu.Item>
-                {width > 839 ? location :''}
-                {width > 839 ? desktopRight : mobileRight}
+                {width > 839 ? desktopRight : desktopRight}
 
             </Menu>
         )
