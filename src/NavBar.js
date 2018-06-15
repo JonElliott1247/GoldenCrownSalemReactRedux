@@ -41,6 +41,20 @@ const SignIn = ({width}) => {
     )
 }
 
+const Navigation = ({width}) => (
+    <Menu.Menu>
+        <OrderOnline width={width}/>
+        <Location width={width}/>
+        <CallNow width={width}/>
+        <SignIn width={width}/>
+
+        <Menu.Item>
+            {/*<Icon size='large' name='shopping cart' color='grey'></Icon>*/}
+            <img src='http://getdrawings.com/images/chinese-food-drawing-5.png' width='80' height='auto' />
+        </Menu.Item>
+    </Menu.Menu>
+);
+
 
 class NavBar extends React.Component {
 
@@ -69,46 +83,19 @@ class NavBar extends React.Component {
     render() {
         const {width} = this.state;
 
-        const desktopRight = (
-            <Menu.Menu>
-                <OrderOnline width={width}/>
-                <Location width={width}/>
-                <CallNow width={width}/>
-                <SignIn width={width}/>
-
-                <Menu.Item>
-                    <Icon size='large' name='shopping cart' color='grey'></Icon>
-                </Menu.Item>
-            </Menu.Menu>
-        );
-
-        const mobileRight = (
-            <Menu.Menu>
-
-                <Menu.Item>
-                    <Button primary size='mini'>Sign in to Order</Button>
-                </Menu.Item>
-                <Menu.Item>
-                    <Icon size='large' name='shopping cart' color='grey'></Icon>
-                </Menu.Item>
-            </Menu.Menu>
-        );
-
         return (
                 
             <Menu className='nav'>
                 <Menu.Item header>
-
                     <Icon size='large' name='chess queen' color='yellow'></Icon>
                     <span>Golden Crown</span>
                 </Menu.Item>
-                {width > 839 ? desktopRight : desktopRight}
+                <Navigation width={width} />
 
             </Menu>
         )
     }
     
-
 }
 
 export default NavBar;

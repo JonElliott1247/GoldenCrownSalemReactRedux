@@ -17,6 +17,19 @@ body {
   color: red;
 }
 
+.order-pitch {
+  color: #1b4ca8; 
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.pitch-slogan{
+  text-transform: uppercase;
+  padding-top: 10px;
+}
+
 @media all and (max-width: 1024px) {
 
 
