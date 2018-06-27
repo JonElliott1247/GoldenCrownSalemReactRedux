@@ -1,8 +1,32 @@
 import React from 'react';
-import {Segment, Header, Button, Icon} from 'semantic-ui-react';
+import {Segment, Header, Button, Icon, Step} from 'semantic-ui-react';
+
+const steps =   [
+{
+    key: 'menu',
+    icon: 'triangle right',
+    title: 'Start Order'
+},
+{
+    key: 'billing',
+    icon: 'payment',
+    title: 'Billing',
+    description: 'Enter billing information'
+},
+{
+    key: 'confirm',
+    disabled: true,
+    icon: 'info',
+    title: 'Confirm Order'
+}
+];
 
 const OrderNowPitch = () => {
 
+    return <Step.Group items={steps}  size='mini'/>
+
+
+    /*
     return (
         <Segment raised>
             <div className="order-pitch">
@@ -12,7 +36,7 @@ const OrderNowPitch = () => {
             </div>
         </Segment>
     );
-
+    */
 
 }
 
