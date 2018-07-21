@@ -22,7 +22,7 @@ const CallNow = ({width}) => {
 }
 
 const Location = ({width}) => (
-        width > 400 ?
+        width > 300 ?
         <Menu.Item>
             <Icon size='large' name='location arrow' color='blue'></Icon>
             {width > 839 ? <span>Location</span> : ''}
@@ -42,12 +42,10 @@ const SignIn = ({width}) => {
 }
 
 const Cart = ({width}) => (
-    width > 300 ?
     <Menu.Item>
         {/*<Icon size='large' name='shopping cart' color='grey'></Icon>*/}
         <img src='http://getdrawings.com/images/chinese-food-drawing-5.png' width='80' height='auto' />
     </Menu.Item> 
-    : ''
 )
 
 const HamburgerMenu = () => (
@@ -67,6 +65,7 @@ const ExpandedNavigation = ({width}) => (
 
 const CollapsedNavigation = ({width}) => (
     <Menu.Menu>
+        <OrderOnline width={width}/>
         <CallNow width = {width} />
         <Location width={width}/>
         <Cart width={width} />
@@ -78,8 +77,6 @@ const CollapsedNavigation = ({width}) => (
 const Navigation = ({width}) => (
     width > 500 ? <ExpandedNavigation width={width} /> : <CollapsedNavigation width={width} />
 )
-
-const styles = {  display: 'flex', justifyContent: 'center'}
 
 class NavBar extends React.Component {
 
@@ -106,13 +103,13 @@ class NavBar extends React.Component {
 
     render() {
         const {width} = this.state;
-
+        const styles = {  display: 'flex', justifyContent: 'center'}
         return (
-            <div style={width > 330 ? styles : {}}>
-            <Menu className='nav' style={width <= 420 ? {...styles, justifyContent: 'space-evenly'} : {}}>
+            <div style={styles}>
+            <Menu className='nav' >
                 <Menu.Item header >
                     <Icon size='large' name='chess queen' color='yellow'></Icon>
-                    <span>{width > 375 ? 'Golden Crown' : 'GC'}</span>
+                    <span>{width > 415 ? 'Golden Crown' : width > 340 ? 'GC' : ''}</span>
                 </Menu.Item>
                 <Navigation width={width} />
 
