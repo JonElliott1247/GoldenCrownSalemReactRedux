@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu, Button, Icon} from 'semantic-ui-react';
+import {Menu, Button, Icon, Header} from 'semantic-ui-react';
 
 const OrderOnline = ({width}) => {
     return (
@@ -35,13 +35,13 @@ const SignIn = ({width}) => {
         <Menu.Item>
             {width > 600 ? 
                 <Button primary size='mini'>Sign in to Order</Button> :
-                <Icon size='large' name='user'/>
+                <div><Icon size='large' name='user'/><span><h1 style={{fontSize: '10px'}}>LOG IN</h1></span></div>
             }
         </Menu.Item>
     )
 }
 
-const Cart = ({width}) => (
+const Cart = () => (
     <Menu.Item>
         {/*<Icon size='large' name='shopping cart' color='grey'></Icon>*/}
         <img src='http://getdrawings.com/images/chinese-food-drawing-5.png' width='80' height='auto' />
@@ -58,8 +58,10 @@ const ExpandedNavigation = ({width}) => (
     <Menu.Menu>
         <OrderOnline width={width}/>
         <CallNow width={width}/>
-        <SignIn width={width}/> 
-        <Cart width={width}/>
+        {width < 600 ? <Location width={width}/> : ''}
+        {width > 540 ? <SignIn width={width}/> : ''}
+        <Cart />
+        <HamburgerMenu />
     </Menu.Menu>
 )
 
@@ -68,7 +70,7 @@ const CollapsedNavigation = ({width}) => (
         <OrderOnline width={width}/>
         <CallNow width = {width} />
         <Location width={width}/>
-        <Cart width={width} />
+        {width > 405 ? <Cart /> : ''}
         <HamburgerMenu />
     </Menu.Menu>
     
@@ -104,12 +106,13 @@ class NavBar extends React.Component {
     render() {
         const {width} = this.state;
         const styles = {  display: 'flex', justifyContent: 'center'}
+
         return (
             <div style={styles}>
             <Menu className='nav' >
                 <Menu.Item header >
                     <Icon size='large' name='chess queen' color='yellow'></Icon>
-                    <span>{width > 415 ? 'Golden Crown' : width > 340 ? 'GC' : ''}</span>
+                    <span>{width > 480 ? 'Golden Crown' : width > 360 ? 'GC' : ''}</span>
                 </Menu.Item>
                 <Navigation width={width} />
 
