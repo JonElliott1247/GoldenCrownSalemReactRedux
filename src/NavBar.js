@@ -50,6 +50,12 @@ const Cart = ({width}) => (
     : ''
 )
 
+const HamburgerMenu = () => (
+    <Menu.Item>
+        <Icon name='bars' size='large'/>            
+    </Menu.Item>
+)
+
 const ExpandedNavigation = ({width}) => (
     <Menu.Menu>
         <OrderOnline width={width}/>
@@ -61,12 +67,10 @@ const ExpandedNavigation = ({width}) => (
 
 const CollapsedNavigation = ({width}) => (
     <Menu.Menu>
+        <CallNow width = {width} />
         <Location width={width}/>
         <Cart width={width} />
-        <Menu.Item>
-            <Icon name='bars' size='large'/>            
-        </Menu.Item>
-        
+        <HamburgerMenu />
     </Menu.Menu>
     
 )
@@ -104,11 +108,11 @@ class NavBar extends React.Component {
         const {width} = this.state;
 
         return (
-            <div style={styles}>
-            <Menu className='nav'>
-                <Menu.Item header>
+            <div style={width > 330 ? styles : {}}>
+            <Menu className='nav' style={width <= 420 ? {...styles, justifyContent: 'space-evenly'} : {}}>
+                <Menu.Item header >
                     <Icon size='large' name='chess queen' color='yellow'></Icon>
-                    <span>Golden Crown</span>
+                    <span>{width > 375 ? 'Golden Crown' : 'GC'}</span>
                 </Menu.Item>
                 <Navigation width={width} />
 
