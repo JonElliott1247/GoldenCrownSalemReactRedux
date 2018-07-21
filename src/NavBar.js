@@ -21,14 +21,14 @@ const CallNow = ({width}) => {
     )
 }
 
-const Location = ({width}) => {
-    return (
+const Location = ({width}) => (
+        width > 400 ?
         <Menu.Item>
             <Icon size='large' name='location arrow' color='blue'></Icon>
             {width > 839 ? <span>Location</span> : ''}
         </Menu.Item>
-    )
-}
+        :''
+)
 
 const SignIn = ({width}) => {
     return (
@@ -41,20 +41,41 @@ const SignIn = ({width}) => {
     )
 }
 
-const Navigation = ({width}) => (
+const Cart = ({width}) => (
+    width > 300 ?
+    <Menu.Item>
+        {/*<Icon size='large' name='shopping cart' color='grey'></Icon>*/}
+        <img src='http://getdrawings.com/images/chinese-food-drawing-5.png' width='80' height='auto' />
+    </Menu.Item> 
+    : ''
+)
+
+const ExpandedNavigation = ({width}) => (
     <Menu.Menu>
         <OrderOnline width={width}/>
-        <Location width={width}/>
         <CallNow width={width}/>
-        <SignIn width={width}/>
-
-        <Menu.Item>
-            {/*<Icon size='large' name='shopping cart' color='grey'></Icon>*/}
-            <img src='http://getdrawings.com/images/chinese-food-drawing-5.png' width='80' height='auto' />
-        </Menu.Item>
+        <SignIn width={width}/> 
+        <Cart width={width}/>
     </Menu.Menu>
-);
+)
 
+const CollapsedNavigation = ({width}) => (
+    <Menu.Menu>
+        <Location width={width}/>
+        <Cart width={width} />
+        <Menu.Item>
+            <Icon name='bars' size='large'/>            
+        </Menu.Item>
+        
+    </Menu.Menu>
+    
+)
+
+const Navigation = ({width}) => (
+    width > 500 ? <ExpandedNavigation width={width} /> : <CollapsedNavigation width={width} />
+)
+
+const styles = {  display: 'flex', justifyContent: 'center'}
 
 class NavBar extends React.Component {
 
@@ -79,12 +100,11 @@ class NavBar extends React.Component {
     }
 
 
-
     render() {
         const {width} = this.state;
 
         return (
-                
+            <div style={styles}>
             <Menu className='nav'>
                 <Menu.Item header>
                     <Icon size='large' name='chess queen' color='yellow'></Icon>
@@ -93,6 +113,7 @@ class NavBar extends React.Component {
                 <Navigation width={width} />
 
             </Menu>
+            </div>
         )
     }
     

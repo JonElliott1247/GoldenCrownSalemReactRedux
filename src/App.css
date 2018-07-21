@@ -5,12 +5,15 @@ html {
 body {
   background: linear-gradient(to right, #e0eafc, #cfdef3);
   width: 100%;
-  display: flex;
-  justify-content: center;
+
 }
 
 .App {
  
+}
+
+.card {
+  max-width: 100px;
 }
 
 .call-slogan {

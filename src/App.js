@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 import NavBar from './NavBar';
-import Category from './Category';
+import Categories from './Categories';
 import OrderNowPitch from './OrderNowPitch';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Category imagePath="https://i.pinimg.com/736x/45/eb/8d/45eb8d3e6751832362b599539f3446e6--chinese-appetizers-best-appetizers.jpg" label="Appetizers" />
+        
       </div>
     );
   }
