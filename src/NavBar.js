@@ -4,8 +4,10 @@ import {Menu, Button, Icon, Header} from 'semantic-ui-react';
 const OrderOnline = ({width}) => {
     return (
     <Menu.Item>
-        <Icon size='large' name='food' color='green'></Icon>
-        {width > 839 ? <span>Order Online</span> : ''}
+        <div>
+            <Icon size='large' name='food' color='green'></Icon>
+            {width > 750 ? <span>Order Online</span> : <span><h1 style={{fontSize: '12px'}}>ORDER</h1></span>}
+        </div>
     </Menu.Item>
     )
 } 
@@ -13,10 +15,10 @@ const OrderOnline = ({width}) => {
 const CallNow = ({width}) => {
     return (
         <Menu.Item>
-            <a href='tel:555-555-5555'>
-                <Icon size='large' name='call square'/>
-                {width > 839 ? <span className='call-slogan'>(555) 555-5555</span> : ''}
-            </a>
+                <div>
+                    <Icon size='large' name='call square' color='blue'/>
+                    {width > 750 ? <span className='call-slogan'>(555) 555-5555</span> : <span><h1 style={{fontSize: '12px'}}>CALL</h1></span>}
+                </div>
         </Menu.Item>
     )
 }
@@ -24,8 +26,10 @@ const CallNow = ({width}) => {
 const Location = ({width}) => (
         width > 300 ?
         <Menu.Item>
-            <Icon size='large' name='location arrow' color='blue'></Icon>
-            {width > 839 ? <span>Location</span> : ''}
+            <div>
+               <Icon size='large' name='location arrow' color='red'></Icon>
+                {width > 839 ? <span>Location</span> : <span><h1 style={{fontSize: '12px'}}>GPS</h1></span>}
+            </div>
         </Menu.Item>
         :''
 )
@@ -35,7 +39,7 @@ const SignIn = ({width}) => {
         <Menu.Item>
             {width > 600 ? 
                 <Button primary size='mini'>Sign in to Order</Button> :
-                <div><Icon size='large' name='user'/><span><h1 style={{fontSize: '10px'}}>LOG IN</h1></span></div>
+                <div><Icon size='large' name='user'/><span><h1 style={{fontSize: '12px'}}>LOG IN</h1></span></div>
             }
         </Menu.Item>
     )
@@ -58,7 +62,7 @@ const ExpandedNavigation = ({width}) => (
     <Menu.Menu>
         <OrderOnline width={width}/>
         <CallNow width={width}/>
-        {width < 600 ? <Location width={width}/> : ''}
+        {width <= 600 ? <Location width={width}/> : ''}
         {width > 540 ? <SignIn width={width}/> : ''}
         <Cart />
         <HamburgerMenu />
