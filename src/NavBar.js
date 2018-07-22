@@ -3,10 +3,11 @@ import {Menu, Button, Icon, Header} from 'semantic-ui-react';
 
 const OrderOnline = ({width}) => {
     return (
-    <Menu.Item>
+    <Menu.Item link>
         <div>
             <Icon size='large' name='food' color='green'></Icon>
-            {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>Order Online</span> : <span><h1 style={{fontSize: '11px'}}>ORDER</h1></span>}
+            {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>Order Online</span> 
+            : <span><h1 style={{fontSize: '11px'}}>ORDER</h1></span>}
         </div>
     </Menu.Item>
     )
@@ -14,10 +15,11 @@ const OrderOnline = ({width}) => {
 
 const CallNow = ({width}) => {
     return (
-        <Menu.Item>
+        <Menu.Item link>
                 <div>
                     <Icon size='large' name='call square' color='blue'/>
-                    {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>(555) 555-5555</span> : <span><h1 style={{fontSize: '11px'}}>CALL</h1></span>}
+                    {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>(555) 555-5555</span>
+                     : <span><h1 style={{fontSize: '11px'}}>CALL</h1></span>}
                 </div>
         </Menu.Item>
     )
@@ -25,10 +27,12 @@ const CallNow = ({width}) => {
 
 const Location = ({width}) => (
         width > 300 ?
-        <Menu.Item>
+        <Menu.Item link>
             <div>
                <Icon size='large' name='location arrow' color='red'></Icon>
-                {width > 839 ? <span>Location</span> : <span><h1 style={{fontSize: '11px'}}>GPS</h1></span>}
+                {
+                    width > 839 ? <span>Location</span> : <span><h1 style={{fontSize: '11px'}}>GPS</h1></span>
+                }
             </div>
         </Menu.Item>
         :''
@@ -36,52 +40,47 @@ const Location = ({width}) => (
 
 const SignIn = ({width}) => {
     return (
-        <Menu.Item>
-            {width > 600 ? 
-                <Button primary size='mini'>Sign in to Order</Button> :
-                <div><Icon size='large' name='user'/><span><h1 style={{fontSize: '11px'}}>LOG IN</h1></span></div>
+        <Menu.Item link>
+            {
+                width > 600 ? <Button primary size='mini'>Sign in to Order</Button>
+                : <div><Icon size='large' name='user'/><span><h1 style={{fontSize: '11px'}}>LOG IN</h1></span></div>
             }
         </Menu.Item>
     )
 }
 
 const Cart = () => (
-    <Menu.Item>
+    <Menu.Item link>
         {/*<Icon size='large' name='shopping cart' color='grey'></Icon>*/}
         <img src='http://getdrawings.com/images/chinese-food-drawing-5.png' width='80' height='auto' />
     </Menu.Item> 
 )
 
 const HamburgerMenu = () => (
-    <Menu.Item>
+    <Menu.Item link>
         <Icon name='bars' size='large'/>            
     </Menu.Item>
 )
 
-const ExpandedNavigation = ({width}) => (
-    <Menu.Menu>
-        <OrderOnline width={width}/>
-        <CallNow width={width}/>
-        {width <= 600 ? <Location width={width}/> : ''}
-        {width > 540 ? <SignIn width={width}/> : ''}
-        <Cart />
-        <HamburgerMenu />
-    </Menu.Menu>
-)
+const Navigation = ({width}) => (
+    //width > 500 ? <ExpandedNavigation width={width} /> : <CollapsedNavigation width={width} />
 
-const CollapsedNavigation = ({width}) => (
     <Menu.Menu>
         <OrderOnline width={width}/>
         <CallNow width = {width} />
-        <Location width={width}/>
+        {width <= 600 ? <Location width={width}/> : ''}
+        {width > 540 ? <SignIn width={width}/> : ''}
         {width > 428 ? <Cart /> : ''}
         <HamburgerMenu />
     </Menu.Menu>
-    
 )
 
-const Navigation = ({width}) => (
-    width > 500 ? <ExpandedNavigation width={width} /> : <CollapsedNavigation width={width} />
+const Logo = ({width}) => (
+    <Menu.Item header >
+        <Icon size='large' name='chess queen' color='yellow'></Icon>
+        {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> 
+        : width > 340 ? <div><div>GC</div> <div style={{fontSize: '9px', fontWeight: '400'}}> Salem, OR.</div></div>  : ''}
+    </Menu.Item>
 )
 
 class NavBar extends React.Component {
@@ -114,13 +113,8 @@ class NavBar extends React.Component {
         return (
             <div style={styles}>
             <Menu className='nav' >
-                <Menu.Item header >
-                    <Icon size='large' name='chess queen' color='yellow'></Icon>
-                    {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> 
-                    : width > 340 ? <div><div>GC</div> <div style={{fontSize: '9px', fontWeight: '400'}}> Salem, OR.</div></div>  : ''}
-                </Menu.Item>
+                <Logo width={width}/>
                 <Navigation width={width} />
-
             </Menu>
             </div>
         )
