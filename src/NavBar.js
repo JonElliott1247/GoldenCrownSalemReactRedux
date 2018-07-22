@@ -6,7 +6,7 @@ const OrderOnline = ({width}) => {
     <Menu.Item>
         <div>
             <Icon size='large' name='food' color='green'></Icon>
-            {width > 750 ? <span style={{fontWeight: 'bold', fontSize: '13px'}}>Order Online</span> : <span><h1 style={{fontSize: '11px'}}>ORDER</h1></span>}
+            {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>Order Online</span> : <span><h1 style={{fontSize: '11px'}}>ORDER</h1></span>}
         </div>
     </Menu.Item>
     )
@@ -17,7 +17,7 @@ const CallNow = ({width}) => {
         <Menu.Item>
                 <div>
                     <Icon size='large' name='call square' color='blue'/>
-                    {width > 750 ? <span style={{fontWeight: 'bold', fontSize: '13px'}}>(555) 555-5555</span> : <span><h1 style={{fontSize: '11px'}}>CALL</h1></span>}
+                    {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>(555) 555-5555</span> : <span><h1 style={{fontSize: '11px'}}>CALL</h1></span>}
                 </div>
         </Menu.Item>
     )
@@ -74,7 +74,7 @@ const CollapsedNavigation = ({width}) => (
         <OrderOnline width={width}/>
         <CallNow width = {width} />
         <Location width={width}/>
-        {width > 405 ? <Cart /> : ''}
+        {width > 428 ? <Cart /> : ''}
         <HamburgerMenu />
     </Menu.Menu>
     
@@ -116,7 +116,8 @@ class NavBar extends React.Component {
             <Menu className='nav' >
                 <Menu.Item header >
                     <Icon size='large' name='chess queen' color='yellow'></Icon>
-                    {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> : width > 360 ? 'GC' : ''}
+                    {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> 
+                    : width > 340 ? <div><div>GC</div> <div style={{fontSize: '9px', fontWeight: '400'}}> Salem, OR.</div></div>  : ''}
                 </Menu.Item>
                 <Navigation width={width} />
 
