@@ -6,7 +6,7 @@ const OrderOnline = ({width}) => {
     <Menu.Item>
         <div>
             <Icon size='large' name='food' color='green'></Icon>
-            {width > 750 ? <span>Order Online</span> : <span><h1 style={{fontSize: '12px'}}>ORDER</h1></span>}
+            {width > 750 ? <span style={{fontWeight: 'bold', fontSize: '13px'}}>Order Online</span> : <span><h1 style={{fontSize: '11px'}}>ORDER</h1></span>}
         </div>
     </Menu.Item>
     )
@@ -17,7 +17,7 @@ const CallNow = ({width}) => {
         <Menu.Item>
                 <div>
                     <Icon size='large' name='call square' color='blue'/>
-                    {width > 750 ? <span className='call-slogan'>(555) 555-5555</span> : <span><h1 style={{fontSize: '12px'}}>CALL</h1></span>}
+                    {width > 750 ? <span style={{fontWeight: 'bold', fontSize: '13px'}}>(555) 555-5555</span> : <span><h1 style={{fontSize: '11px'}}>CALL</h1></span>}
                 </div>
         </Menu.Item>
     )
@@ -28,7 +28,7 @@ const Location = ({width}) => (
         <Menu.Item>
             <div>
                <Icon size='large' name='location arrow' color='red'></Icon>
-                {width > 839 ? <span>Location</span> : <span><h1 style={{fontSize: '12px'}}>GPS</h1></span>}
+                {width > 839 ? <span>Location</span> : <span><h1 style={{fontSize: '11px'}}>GPS</h1></span>}
             </div>
         </Menu.Item>
         :''
@@ -39,7 +39,7 @@ const SignIn = ({width}) => {
         <Menu.Item>
             {width > 600 ? 
                 <Button primary size='mini'>Sign in to Order</Button> :
-                <div><Icon size='large' name='user'/><span><h1 style={{fontSize: '12px'}}>LOG IN</h1></span></div>
+                <div><Icon size='large' name='user'/><span><h1 style={{fontSize: '11px'}}>LOG IN</h1></span></div>
             }
         </Menu.Item>
     )
@@ -116,7 +116,7 @@ class NavBar extends React.Component {
             <Menu className='nav' >
                 <Menu.Item header >
                     <Icon size='large' name='chess queen' color='yellow'></Icon>
-                    <span>{width > 480 ? 'Golden Crown' : width > 360 ? 'GC' : ''}</span>
+                    {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> : width > 360 ? 'GC' : ''}
                 </Menu.Item>
                 <Navigation width={width} />
 
