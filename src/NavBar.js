@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu, Button, Icon, Header} from 'semantic-ui-react';
+import {Menu, Button, Icon} from 'semantic-ui-react';
 
 const OrderOnline = ({width}) => {
     return (
@@ -26,7 +26,6 @@ const CallNow = ({width}) => {
 }
 
 const Location = ({width}) => (
-        width > 300 ?
         <Menu.Item link>
             <div>
                <Icon size='large' name='location arrow' color='red'></Icon>
@@ -35,7 +34,6 @@ const Location = ({width}) => (
                 }
             </div>
         </Menu.Item>
-        :''
 )
 
 const SignIn = ({width}) => {
@@ -63,11 +61,7 @@ const HamburgerMenu = () => (
 )
 
 const Navigation = ({width}) => (
-    //width > 500 ? <ExpandedNavigation width={width} /> : <CollapsedNavigation width={width} />
-
-    <Menu.Menu>
-        <OrderOnline width={width}/>
-        <CallNow width = {width} />
+    <Menu.Menu position='right'>
         {width <= 600 ? <Location width={width}/> : ''}
         {width > 540 ? <SignIn width={width}/> : ''}
         {width > 428 ? <Cart /> : ''}
@@ -76,7 +70,7 @@ const Navigation = ({width}) => (
 )
 
 const Logo = ({width}) => (
-    <Menu.Item header >
+    <Menu.Item header>
         <Icon size='large' name='chess queen' color='yellow'></Icon>
         {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> 
         : width > 340 ? <div><div>GC</div> <div style={{fontSize: '9px', fontWeight: '400'}}> Salem, OR.</div></div>  : ''}
@@ -108,15 +102,15 @@ class NavBar extends React.Component {
 
     render() {
         const {width} = this.state;
-        const styles = {  display: 'flex', justifyContent: 'center'}
+        const styles = {  display: 'flex', justifyContent: 'space-between'}
 
         return (
-            <div style={styles}>
-            <Menu className='nav' >
+            <Menu style={{margin: '0px'}}>
                 <Logo width={width}/>
+                <OrderOnline width={width}/>
+                <CallNow width = {width} />
                 <Navigation width={width} />
             </Menu>
-            </div>
         )
     }
     

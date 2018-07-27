@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './NavBar';
 import Categories from './Categories';
 import OrderNowPitch from './OrderNowPitch';
+import HamburgerMenuExpanded from './HamburgerMenuExpanded';
 
 class App extends Component {
   render() {
@@ -11,7 +12,9 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        
+        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+          <HamburgerMenuExpanded />
+        </div>
       </div>
     );
   }
