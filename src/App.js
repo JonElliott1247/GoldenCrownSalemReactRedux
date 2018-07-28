@@ -13,7 +13,6 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-          <HamburgerMenuExpanded />
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Menu, Button, Icon} from 'semantic-ui-react';
+import HamburgerMenu from './HamburgerMenu';
 
 const OrderOnline = ({width}) => {
     return (
@@ -18,7 +19,7 @@ const CallNow = ({width}) => {
         <Menu.Item link>
                 <div>
                     <Icon size='large' name='call square' color='blue'/>
-                    {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>(555) 555-5555</span>
+                    {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>(503) 362-9560</span>
                      : <span><h1 style={{fontSize: '11px'}}>CALL</h1></span>}
                 </div>
         </Menu.Item>
@@ -47,25 +48,27 @@ const SignIn = ({width}) => {
     )
 }
 
-const Cart = () => (
+const Cart = ({active = false}) => (
     <Menu.Item link>
         {/*<Icon size='large' name='shopping cart' color='grey'></Icon>*/}
         <img src='http://getdrawings.com/images/chinese-food-drawing-5.png' width='80' height='auto' />
     </Menu.Item> 
 )
 
+/*
 const HamburgerMenu = () => (
     <Menu.Item link>
         <Icon name='bars' size='large'/>            
     </Menu.Item>
 )
+*/
 
 const Navigation = ({width}) => (
     <Menu.Menu position='right'>
         {width <= 600 ? <Location width={width}/> : ''}
-        {width > 540 ? <SignIn width={width}/> : ''}
+        {width > 540 ? <SignIn width={width} /> : ''}
         {width > 428 ? <Cart /> : ''}
-        <HamburgerMenu />
+        <HamburgerMenu/>
     </Menu.Menu>
 )
 
@@ -81,7 +84,7 @@ class NavBar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {width: document.documentElement.clientWidth};
+        this.state = {width: document.documentElement.clientWidth, active: ""};
         this.updateWidth = this.updateWidth.bind(this);
     }
 
@@ -106,7 +109,7 @@ class NavBar extends React.Component {
 
         return (
             <Menu style={{margin: '0px'}}>
-                <Logo width={width}/>
+                <Logo width={width} />
                 <OrderOnline width={width}/>
                 <CallNow width = {width} />
                 <Navigation width={width} />
