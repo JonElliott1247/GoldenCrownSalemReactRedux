@@ -1,8 +1,8 @@
 import React from 'react';
-import {List, Segment, Divider, Table} from 'semantic-ui-react';
+import {List, Segment, Divider, Table, Button} from 'semantic-ui-react';
 
 const Hours = () => (
-    <Table basic='very' celled>
+    <Table celled>
         <Table.Header>
             <Table.Row>
                 <Table.HeaderCell>Days</Table.HeaderCell>
@@ -54,8 +54,8 @@ const HamburgerMenuExpanded = () => (
                 <List.Content>
                     <List.Header>My Account</List.Header>
                     <List style={{fontSize: '16 px'}}>
-                        <List.Item>Sign In</List.Item>
-                        <List.Item>Update information</List.Item>
+                        <List.Item><Button primary>Sign In</Button></List.Item>
+                        <List.Item><Button disabled>Update information</Button></List.Item>
                     </List>
                 </List.Content>
         </List.Item>
