@@ -1,6 +1,6 @@
 import React from 'react';
 import {Menu, Button, Icon} from 'semantic-ui-react';
-import HamburgerMenu from './HamburgerMenu';
+import HamburgerMenu from './hamburgerMenu/HamburgerMenu';
 
 const OrderOnline = ({width}) => {
     return (

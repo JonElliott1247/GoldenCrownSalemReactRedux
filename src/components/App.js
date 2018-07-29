@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
-import './App.css';
+import '../styles/App.css';
 import NavBar from './NavBar';
-import Categories from './Categories';
-import OrderNowPitch from './OrderNowPitch';
-import HamburgerMenuExpanded from './HamburgerMenuExpanded';
 
 class App extends Component {
   render() {
