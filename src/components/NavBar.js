@@ -2,9 +2,9 @@ import React from 'react';
 import {Menu, Button, Icon} from 'semantic-ui-react';
 import HamburgerMenu from './hamburgerMenu/HamburgerMenu';
 
-const OrderOnline = ({width}) => {
+const OrderOnline = ({width, onClick}) => {
     return (
-    <Menu.Item link>
+    <Menu.Item id='nav-order-online' onClick={onClick} link>
         <div>
             <Icon size='large' name='food' color='green'></Icon>
             {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>Order Online</span> 
@@ -14,9 +14,9 @@ const OrderOnline = ({width}) => {
     )
 } 
 
-const CallNow = ({width}) => {
+const CallNow = ({width, onClick}) => {
     return (
-        <Menu.Item link>
+        <Menu.Item id='nav-sign-in' onClick={onClick} link>
                 <div>
                     <Icon size='large' name='call square' color='blue'/>
                     {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>(503) 362-9560</span>
@@ -26,8 +26,8 @@ const CallNow = ({width}) => {
     )
 }
 
-const Location = ({width}) => (
-        <Menu.Item link>
+const Location = ({width, onClick}) => (
+        <Menu.Item id='nav-gps' onClick={onClick} link>
             <div>
                <Icon size='large' name='location arrow' color='red'></Icon>
                 {
@@ -37,9 +37,9 @@ const Location = ({width}) => (
         </Menu.Item>
 )
 
-const SignIn = ({width}) => {
+const SignIn = ({width, onClick}) => {
     return (
-        <Menu.Item link>
+        <Menu.Item id='nav-sign-in' onClick={onClick} link>
             {
                 width > 600 ? <Button primary size='mini'>Sign in to Order</Button>
                 : <div><Icon size='large' name='user'/><span><h1 style={{fontSize: '11px'}}>LOG IN</h1></span></div>
@@ -48,36 +48,28 @@ const SignIn = ({width}) => {
     )
 }
 
-const Cart = ({active = false}) => (
-    <Menu.Item link>
+const Cart = ({onClick}) => (
+    <Menu.Item id='nav-cart' onClick={onClick} link>
         {/*<Icon size='large' name='shopping cart' color='grey'></Icon>*/}
         <img src='http://getdrawings.com/images/chinese-food-drawing-5.png' width='80' height='auto' />
     </Menu.Item> 
 )
 
-/*
-const HamburgerMenu = () => (
-    <Menu.Item link>
-        <Icon name='bars' size='large'/>            
-    </Menu.Item>
-)
-*/
-
-const Navigation = ({width}) => (
+const RightSide = ({width, onClick}) => (
     <Menu.Menu position='right'>
-        {width <= 600 ? <Location width={width}/> : ''}
-        {width > 540 ? <SignIn width={width} /> : ''}
-        {width > 428 ? <Cart /> : ''}
-        <HamburgerMenu/>
+        {width <= 600 ? <Location width={width} onClick={onClick}  /> : ''}
+        {width > 540 ? <SignIn width={width} onClick={onClick} /> : ''}
+        {width > 428 ? <Cart onClick={onClick} /> : ''}
+        <HamburgerMenu onClick={onClick} />
     </Menu.Menu>
 )
 
-const Logo = ({width}) => (
-    <Menu.Item header>
-        <Icon size='large' name='chess queen' color='yellow'></Icon>
-        {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> 
-        : width > 340 ? <div><div>GC</div> <div style={{fontSize: '9px', fontWeight: '400'}}> Salem, OR.</div></div>  : ''}
-    </Menu.Item>
+const Logo = ({width, onClick}) => (
+        <Menu.Item id='nav-logo' header onClick={onClick}>
+            <Icon size='large' name='chess queen' color='yellow'></Icon>
+            {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> 
+            : width > 340 ? <div><div>GC</div> <div style={{fontSize: '9px', fontWeight: '400'}}> Salem, OR.</div></div>  : ''}
+        </Menu.Item>
 )
 
 class NavBar extends React.Component {
@@ -98,21 +90,18 @@ class NavBar extends React.Component {
         window.addEventListener('resize', this.updateWidth);
     }
 
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWidth);
-    }
-
 
     render() {
         const {width} = this.state;
-        const styles = {  display: 'flex', justifyContent: 'space-between'}
-
+        const {onClick} = this.props;
+        const {active} = this.props;
+        console.log(active);
         return (
-            <Menu style={{margin: '0px'}}>
-                <Logo width={width} />
-                <OrderOnline width={width}/>
-                <CallNow width = {width} />
-                <Navigation width={width} />
+            <Menu>
+                <Logo width={width} onClick={onClick} />
+                <OrderOnline width={width} onClick={onClick} />
+                <CallNow width = {width}  onClick={onClick} />
+                <RightSide width={width} onClick={onClick} />
             </Menu>
         )
     }

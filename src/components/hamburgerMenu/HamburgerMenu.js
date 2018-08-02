@@ -23,7 +23,7 @@ class HamburgerMenu extends React.Component {
     )
 
     unExpandedMenu = () => ( 
-        <Menu.Item link>
+        <Menu.Item onClick={this.props.onClick} link>
             <Icon name='bars' size='large' onClick={() => this.setState({expanded : true}) } />
         </Menu.Item>
 

@@ -1,9 +1,20 @@
 import {connect} from 'react-redux';
-import NavBar from './NavBar';
+import NavBar from '../components/NavBar';
+import {clickNavigationButton} from '../actions/navigation'
 
 //flesh these out later
-const mapStateToProps = (state, ownProps) => {};
-const mapDispatchToProps = dispatch => (dispatch('FAKE_ACTION'));
+const mapStateToProps = (state) => {
+    return  {
+                active: state.navSelected
+            }
+}
+const mapDispatchToProps = dispatch => {
+    return  {
+                onClick: () => alert('Hello')
+            }
+}
+    //dispatch(clickNavigationButton(id))
+
 
 const NavigationContainer = connect(
     mapStateToProps,
