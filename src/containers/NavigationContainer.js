@@ -5,12 +5,12 @@ import {clickNavigationButton} from '../actions/navigation'
 //flesh these out later
 const mapStateToProps = (state) => {
     return  {
-                active: state.navSelected
+                navSelected: state.navSelected,
             }
 }
 const mapDispatchToProps = dispatch => {
     return  {
-                onClick: (message) => alert(message)
+                onClick: (id) => dispatch(clickNavigationButton(id))
             }
 }
     //dispatch(clickNavigationButton(id))
