@@ -11,20 +11,24 @@ export const NavActions = {
 
 //action creator
 export const clickNavigationButton = (id) => {
+    
     switch(id)
     {
+        
         case 'nav-logo': 
-            return {type: NavActions.CLICK_LOGO}
+            return {type: NavActions.CLICK_LOGO, id}
         case 'nav-order-online':
-            return {type: NavActions.CLICK_ORDER_BUTTON}
+            return {type: NavActions.CLICK_ORDER_BUTTON, id}
+        case 'nav-call':
+            return {type: NavActions.CLICK_CALL_BUTTON, id}
         case 'nav-sign-in':
-            return {type: NavActions.CLICK_SIGN_IN}
+            return {type: NavActions.CLICK_SIGN_IN, id}
         case 'nav-gps':
-            return {type: NavActions.CLICK_GPS}
+            return {type: NavActions.CLICK_GPS, id}
         case 'nav-cart':
-            return {type: NavActions.CLICK_CART}
+            return {type: NavActions.CLICK_CART, id}
         case 'nav-hamburger-menu':
-            return {type: NavActions.CLICK_HAMBURGER_MENU}
+            return {type: NavActions.CLICK_HAMBURGER_MENU, id}
         case '':
         default:
             return {type: NavActions.CLEAR};

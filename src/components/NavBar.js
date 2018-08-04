@@ -3,8 +3,9 @@ import {Menu, Button, Icon} from 'semantic-ui-react';
 import HamburgerMenu from './hamburgerMenu/HamburgerMenu';
 
 const OrderOnline = ({width, onClick}) => {
+    const id = 'nav-order-online';
     return (
-    <Menu.Item id='nav-order-online' onClick={onClick} link>
+    <Menu.Item id={id} onClick={() => onClick(id)} link>
         <div>
             <Icon size='large' name='food' color='green'></Icon>
             {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>Order Online</span> 
@@ -15,8 +16,9 @@ const OrderOnline = ({width, onClick}) => {
 } 
 
 const CallNow = ({width, onClick}) => {
+    const id = 'nav-sign-in';
     return (
-        <Menu.Item id='nav-sign-in' onClick={onClick} link>
+        <Menu.Item id={id} onClick={() => onClick(id)} link>
                 <div>
                     <Icon size='large' name='call square' color='blue'/>
                     {width > 750 ? <span style={{color: '#303030', fontWeight: 'bold', fontSize: '12px'}}>(503) 362-9560</span>
@@ -95,7 +97,7 @@ class NavBar extends React.Component {
         const {width} = this.state;
         const {onClick} = this.props;
         const {active} = this.props;
-        console.log(active);
+
         return (
             <Menu>
                 <Logo width={width} onClick={onClick} />

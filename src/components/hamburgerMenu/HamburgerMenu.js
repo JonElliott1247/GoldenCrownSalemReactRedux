@@ -16,7 +16,7 @@ class HamburgerMenu extends React.Component {
         this.state = {expanded: false};
     }
 
-    expandedMenu = () => (
+    Menu = () => (
         <Modal trigger={this.unExpandedMenu()} closeIcon centered={false}>
             <HamburgerMenuExpanded />
         </Modal>
@@ -31,7 +31,7 @@ class HamburgerMenu extends React.Component {
 
     render() {
         const {expanded} = this.state;
-        return this.expandedMenu();
+        return this.Menu();
         //return expanded ? this.expandedMenu() : this.unExpandedMenu() ;
     }
 

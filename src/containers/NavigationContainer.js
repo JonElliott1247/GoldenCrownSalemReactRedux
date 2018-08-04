@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = dispatch => {
     return  {
-                onClick: () => alert('Hello')
+                onClick: (message) => alert(message)
             }
 }
     //dispatch(clickNavigationButton(id))
