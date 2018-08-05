@@ -3,6 +3,17 @@ import {Menu, Button, Icon} from 'semantic-ui-react';
 import HamburgerMenu from './hamburgerMenu/HamburgerMenu';
 import {navButtonIds} from '../actions/navigation';
 
+const Logo = ({width, onClick}) => {
+    const id = navButtonIds.HOME;
+    return (
+            <Menu.Item id={id} header onClick={() => onClick(id)}>
+                <Icon size='large' name='chess queen' color='yellow'></Icon>
+                {width > 580 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> 
+                : width > 360 ? <div><div>GC</div> <div style={{fontSize: '9px', fontWeight: '400'}}> Salem, OR.</div></div>  : ''}
+            </Menu.Item>
+    )
+}
+
 const OrderOnline = ({width, onClick, navSelected}) => {
     const id = navButtonIds.ORDER_ONLINE;
     console.log(navSelected);
@@ -71,22 +82,11 @@ const Cart = ({onClick, navSelected}) => {
 const RightSide = ({width, onClick, navSelected}) => (
     <Menu.Menu position='right'>
         {width <= 600 ? <Location width={width} onClick={onClick} navSelected={navSelected} /> : ''}
-        {width > 540 ? <SignIn width={width} onClick={onClick} navSelected={navSelected} /> : ''}
+        {width > 495 ? <SignIn width={width} onClick={onClick} navSelected={navSelected} /> : ''}
         {width > 428 ? <Cart onClick={onClick} navSelected={navSelected} /> : ''}
         <HamburgerMenu onClick={onClick} />
     </Menu.Menu>
 )
-
-const Logo = ({width, onClick}) => {
-    const id = navButtonIds.HOME;
-    return (
-            <Menu.Item id={id} header onClick={() => onClick(id)}>
-                <Icon size='large' name='chess queen' color='yellow'></Icon>
-                {width > 480 ? <div><div>Golden Crown</div> <div style={{fontSize: '10px', fontWeight: '100'}}> Salem, OR.</div></div> 
-                : width > 340 ? <div><div>GC</div> <div style={{fontSize: '9px', fontWeight: '400'}}> Salem, OR.</div></div>  : ''}
-            </Menu.Item>
-    )
-}
 
 class NavBar extends React.Component {
 

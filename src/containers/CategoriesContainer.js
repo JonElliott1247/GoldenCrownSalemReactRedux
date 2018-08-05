@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
-import NavBar from '../components/NavBar';
-import {clickNavigationButton} from '../actions/navigation'
+import Category from '../components/Category';
+
+fetch("http://localhost:51099/api/categories").then((response) => response.json()).then( (response) => console.log(response));
 
 const mapStateToProps = (state) => {
     return  {
