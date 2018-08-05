@@ -7,20 +7,29 @@ import Categories from './Categories';
 
 
 class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {width: document.documentElement.clientWidth, active: ""};
+      this.updateWidth = this.updateWidth.bind(this);
+  }
+
+  updateWidth() {
+      const width = document.documentElement.clientWidth;
+      this.setState({width});
+  }
+
+  componentDidMount() {
+      this.updateWidth();
+      window.addEventListener('resize', this.updateWidth);
+  }
 
   render() {
 
-    const dummyCategory = {
-      imagePath: "https://i.pinimg.com/736x/45/eb/8d/45eb8d3e6751832362b599539f3446e6--chinese-appetizers-best-appetizers.jpg",
-      label:"Appetizers",
-      description:"Try our delicious appetizers!"
-    }
+    const {width} = this.state;
     return (
         <div className="App">
-          <NavigationContainer />
-          <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-            <Categories/>
-          </div>
+          <NavigationContainer width={width}/>
+          <Categories width={width}/>
         </div>
     );
   }

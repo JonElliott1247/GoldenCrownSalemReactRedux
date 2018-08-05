@@ -88,28 +88,9 @@ const RightSide = ({width, onClick, navSelected}) => (
     </Menu.Menu>
 )
 
-class NavBar extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {width: document.documentElement.clientWidth, active: ""};
-        this.updateWidth = this.updateWidth.bind(this);
-    }
+const NavBar = ({width, onClick, navSelected}) => {
 
-    updateWidth() {
-        const width = document.documentElement.clientWidth;
-        this.setState({width});
-    }
-
-    componentDidMount() {
-        this.updateWidth();
-        window.addEventListener('resize', this.updateWidth);
-    }
-
-
-    render() {
-        const {width} = this.state;
-        const {onClick, navSelected} = this.props;
         console.log(navSelected)
         return (
             <Menu>
@@ -120,7 +101,6 @@ class NavBar extends React.Component {
             </Menu>
         )
     }
-    
-}
+
 
 export default NavBar;
