@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu, Button, Icon} from 'semantic-ui-react';
+import {Menu, Button, Icon, Sticky} from 'semantic-ui-react';
 import HamburgerMenu from './hamburgerMenu/HamburgerMenu';
 import {navButtonIds} from '../actions/navigation';
 
@@ -93,7 +93,7 @@ const NavBar = ({width, onClick, navSelected}) => {
 
         console.log(navSelected)
         return (
-            <Menu>
+            <Menu style={{position: 'sticky', top:'0px', zIndex: '2', gridColumn: '1 / -1', gridRow: '1 / span 1'}}>
                 <Logo width={width} onClick={onClick} />
                 <OrderOnline width={width} onClick={onClick} navSelected={navSelected}/>
                 <CallNow width = {width}  onClick={onClick} navSelected={navSelected}/>

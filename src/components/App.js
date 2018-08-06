@@ -28,8 +28,10 @@ class App extends Component {
     const {width} = this.state;
     return (
         <div className="App">
-          <NavigationContainer width={width}/>
-          <Categories width={width}/>
+          <NavigationContainer width={width} style={{position: 'sticky', top:'0px', zIndex: '2'}}/>
+          <div style={{display: 'flex', gridTemplateColumns: '10% 80% 10%', gridTemplateRows: '20% 80%'}}>
+            <Categories width={width}  style={{gridRow: '1 / span 1', gridColumn: '1 / span 1'}}/>
+          </div>
         </div>
     );
   }
