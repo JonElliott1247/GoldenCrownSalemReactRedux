@@ -26,11 +26,12 @@ class App extends Component {
   render() {
 
     const {width} = this.state;
+    const navHeight = '55px';
     return (
         <div className="App">
-          <NavigationContainer width={width} style={{position: 'sticky', top:'0px', zIndex: '2'}}/>
+          <NavigationContainer width={width} navHeight={navHeight} style={{position: 'sticky', top:'0px', zIndex: '2'}}/>
           <div style={{display: 'flex', gridTemplateColumns: '10% 80% 10%', gridTemplateRows: '20% 80%'}}>
-            <Categories width={width}  style={{gridRow: '1 / span 1', gridColumn: '1 / span 1'}}/>
+            <Categories width={width} navHeight={navHeight} style={{gridRow: '1 / span 1', gridColumn: '1 / span 1'}}/>
           </div>
         </div>
     );

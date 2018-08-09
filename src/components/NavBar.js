@@ -1,6 +1,7 @@
 import React from 'react';
 import {Menu, Button, Icon, Sticky} from 'semantic-ui-react';
 import HamburgerMenu from './hamburgerMenu/HamburgerMenu';
+import SignIn from './SignIn';
 import {navButtonIds} from '../actions/navigation';
 
 const Logo = ({width, onClick}) => {
@@ -55,7 +56,7 @@ const Location = ({width, onClick, navSelected}) => {
         </Menu.Item>
     )
 }
-
+/*
 const SignIn = ({width, onClick, navSelected}) => {
     const id = navButtonIds.SIGN_IN;
 
@@ -68,7 +69,7 @@ const SignIn = ({width, onClick, navSelected}) => {
         </Menu.Item>
     )
 }
-
+*/
 const Cart = ({onClick, navSelected}) => {
     const id = navButtonIds.CART;
     return (
@@ -89,11 +90,11 @@ const RightSide = ({width, onClick, navSelected}) => (
 )
 
 
-const NavBar = ({width, onClick, navSelected}) => {
+const NavBar = ({width, onClick, navSelected, navHeight}) => {
 
         console.log(navSelected)
         return (
-            <Menu style={{position: 'sticky', top:'0px', zIndex: '2', gridColumn: '1 / -1', gridRow: '1 / span 1'}}>
+            <Menu style={{position: 'sticky', top:'0px', zIndex: '2', gridColumn: '1 / -1', gridRow: '1 / span 1', height: navHeight}}>
                 <Logo width={width} onClick={onClick} />
                 <OrderOnline width={width} onClick={onClick} navSelected={navSelected}/>
                 <CallNow width = {width}  onClick={onClick} navSelected={navSelected}/>

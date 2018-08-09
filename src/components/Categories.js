@@ -3,12 +3,12 @@ import {Card, Segment, Button} from 'semantic-ui-react'
 
 import Category from './Category';
 
-const Categories = ({width}) => {
+const Categories = ({width, navHeight}) => {
 
     const itemsPerRow = width > 825 ? 3 : width > 500 ? 2 : 1
     return (
     <div style={{display: 'grid', gridTemplateColumns: '10% 80% 10%'}}>
-        <Segment style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', gridColumnStart: '2', gridColumnEnd: '3'}} attached='top' inverted>
+        <Segment style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', gridColumnStart: '2', gridColumnEnd: '3', position: 'sticky', top:navHeight, zIndex: '2', marginTop: '30px'}} attached='top' inverted>
             <span>Choose a category...</span><span><Button color='olive'>All menu items</Button></span>
         </Segment>
         <Segment style={{gridColumnStart: '2', gridColumnEnd: '3'}} attached='bottom' secondary>
